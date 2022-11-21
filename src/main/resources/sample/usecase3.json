@@ -1,0 +1,428 @@
+{
+  "_id": {
+    "$oid": "620d73f40ec8e032b5d000ee"
+  },
+  "wfPmtOrdrPrcg": {
+    "com_wellsfargo_epd_upo_avro_WfPmtOrdrPrcg": {
+      "applId": {
+        "string": "PMTS"
+      },
+      "pmtRail": {
+        "string": "OTH"
+      },
+      "pmtDlvryTp": null,
+      "pmtTp": {
+        "string": "WIRES"
+      },
+      "applCstmrId": null,
+      "applUsrId": null,
+      "pmtDesc": {
+        "string": "*FTR000000000220220216-5          NRFUSDUSD00000000000078.SFTRN            121\n2FTR 220216            FED\n5FTR                                                                    PBJ\nORG=G/001000594464228\n-WF PORT OPS PLEDGE-SUS OPS\n-90 S 7TH ST 13TH FL\n-MINNEAPOLIS MN 55402-3903\nSRF=1BFD.OAQ\nORF=20220216-5\nSBK=A/121000248\nDBT=G/01000594464228\nBBK=A/021000018\n-Bank of New York Mellon\nBNF= /WF 8901164208\n-301 South College Street Charlotte\n"
+      },
+      "thrdPtyId": null,
+      "pmtOrdrId": {
+        "string": "2022021600000058"
+      },
+      "acctSvcrId": null,
+      "clrSysInf": null,
+      "applFileId": {
+        "string": "2022021600000058"
+      },
+      "pmtErr": null,
+      "tplInf": null,
+      "acctTracId": null,
+      "cstmrInf": null,
+      "pmtTrckrUUID": null
+    }
+  },
+  "pmtInf": {
+    "com_wellsfargo_epd_upo_avro_PmtInf": {
+      "pmtId": {
+        "com_wellsfargo_epd_upo_avro_PmtId": {
+          "instrId": null,
+          "endToEndId": null,
+          "txId": {
+            "string": "2022021600000058"
+          },
+          "msgId": null,
+          "orgnlInstrId": null,
+          "orgnlEndToEndId": null,
+          "orgnlTxId": null,
+          "orgnlPmtInfId": null,
+          "orgnlMsgId": null
+        }
+      },
+      "cdtDbtInd": null,
+      "amt": {
+        "com_wellsfargo_epd_upo_avro_Amt": {
+          "instdAmt": {
+            "com_wellsfargo_epd_upo_avro_InstdAmt": {
+              "amt": {
+                "string": "78.00"
+              },
+              "ccy": {
+                "string": "USD"
+              }
+            }
+          },
+          "dbtAmt": {
+            "com_wellsfargo_epd_upo_avro_DbtAmt": {
+              "amt": {
+                "string": "78.00"
+              },
+              "ccy": {
+                "string": "USD"
+              }
+            }
+          },
+          "cdtAmt": {
+            "com_wellsfargo_epd_upo_avro_CdtAmt": {
+              "amt": {
+                "string": "78.00"
+              },
+              "ccy": {
+                "string": "USD"
+              }
+            }
+          }
+        }
+      },
+      "xchgRateInf": {
+        "com_wellsfargo_epd_upo_avro_XchgRateInf": {
+          "unitCcy": null,
+          "wf_QtdCcy": null,
+          "xchgRate": {
+            "string": "1.00000000000"
+          },
+          "rateTp": null,
+          "ctrctId": null,
+          "wf_CtrctTp": null,
+          "wf_BuySellInd": null
+        }
+      },
+      "chrgBr": null,
+      "wf_CutoffDtTm": null,
+      "wf_XprtnDays": null,
+      "instrForCdtrAgt": null,
+      "instrForNxtAgt": null,
+      "InstrForDbtrAgt": null,
+      "chrgsAcct": null,
+      "chrgsAcctAgt": null,
+      "initgPty": null,
+      "fwdgAgt": null,
+      "dbtr": {
+        "com_wellsfargo_epd_upo_avro_Dbtr": {
+          "nm": {
+            "string": "WF PORT OPS PLEDGE-SUS OPS 465936WB"
+          },
+          "shrtNm": null,
+          "gvnNm": null,
+          "mdlNm": null,
+          "surNm": null,
+          "sfx": null,
+          "pstlAdr": {
+            "com_wellsfargo_epd_upo_avro_PstlAdr": {
+              "adrLine": {
+                "array": [
+                  {
+                    "string": "MAC A0194-290 45 FREMONT ST 29TH FL SAN FRANCISCO CA US 94105-2204"
+                  }
+                ]
+              },
+              "adrTp": null,
+              "dept": null,
+              "subDept": null,
+              "strtNm": {
+                "string": "MAC A0194-290 45 FREMONT ST 29TH FL SAN FRANCISCO CA US 94105-2204"
+              },
+              "bldgNb": null,
+              "pstCd": {
+                "string": "94105-2204"
+              },
+              "twnNm": null,
+              "ctrySubDvsn": null,
+              "ctry": {
+                "string": "US"
+              }
+            }
+          },
+          "dbtrId": {
+            "com_wellsfargo_epd_upo_avro_Id": {
+              "orgId": {
+                "com_wellsfargo_epd_upo_avro_OrgId": {
+                  "anyBic": null,
+                  "estblishdDt": null,
+                  "regnDt": null,
+                  "regnCtry": null,
+                  "othr": null
+                }
+              },
+              "prvtId": null
+            }
+          },
+          "ctryOfRes": null,
+          "ctctDtls": null,
+          "wf_NtfctnDtls": null
+        }
+      },
+      "dbtrAcct": {
+        "com_wellsfargo_epd_upo_avro_DbtrAcct": {
+          "id": {
+            "com_wellsfargo_epd_upo_avro_Id_1": {
+              "iban": {
+                "string": "001000594464228"
+              },
+              "othr": {
+                "com_wellsfargo_epd_upo_avro_Othr": {
+                  "id": {
+                    "string": "001000594464228"
+                  },
+                  "schmeNm": null,
+                  "issr": null,
+                  "prxy": {
+                    "com_wellsfargo_epd_upo_avro_Prxy": {
+                      "id": null,
+                      "tp": {
+                        "string": "B"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "tp": {
+            "string": "G"
+          },
+          "ccy": null,
+          "nm": null,
+          "wf_AcctFlg": null,
+          "wf_AcctTp": null,
+          "wf_PrdtCd": null,
+          "wf_CpnyNb": null,
+          "wf_SubPrdtCd": null
+        }
+      },
+      "dbtrAgt": {
+        "com_wellsfargo_epd_upo_avro_DbtrAgt": {
+          "finInstnId_2": {
+            "com_wellsfargo_epd_upo_avro_FinInstnId_2": {
+              "bicfi": "BBWIUS44",
+              "uschu": null,
+              "clrSysMmbId": null,
+              "nm": {
+                "string": ""
+              },
+              "pstlAdr_1": {
+                "string": ""
+              },
+              "twnNm": {
+                "string": ""
+              },
+			  "ctry": {
+                "string": ""
+              }
+            }
+          },
+          "brnchId": {
+            "com_wellsfargo_epd_upo_avro_BrnchId": {
+              "id": null,
+              "nm": null,
+              "pstlAdr_1": null
+            }
+          }
+        }
+      },
+      "ultmtDbtr": null,
+      "cdtr": {
+        "com_wellsfargo_epd_upo_avro_Cdtr": {
+          "nm": {
+            "string": "301 South College Street Charlotte"
+          },
+          "shrtNm": null,
+          "gvnNm": null,
+          "mdlNm": null,
+          "surNm": null,
+          "sfx": null,
+          "pstlAdr": {
+            "com_wellsfargo_epd_upo_avro_PstlAdr_1": {
+              "adrLine": {
+                "array": [
+                  {
+                    "string": "MAC A0194-290 45 FREMONT ST 29TH FL SAN FRANCISCO CA US 94105-2204"
+                  }
+                ]
+              },
+              "adrTp": null,
+              "dept": null,
+              "subDept": null,
+              "strtNm": {
+                "string": "MAC A0194-290 45 FREMONT ST 29TH FL SAN FRANCISCO CA US 94105-2204"
+              },
+              "bldgNb": null,
+              "pstCd": {
+                "string": "50266-9310"
+              },
+              "twnNm": null,
+              "ctrySubDvsn": null,
+              "ctry": {
+                "string": "US"
+              }
+            }
+          },
+          "cdtrId": {
+            "com_wellsfargo_epd_upo_avro_Id": {
+              "orgId": {
+                "com_wellsfargo_epd_upo_avro_OrgId": {
+                  "anyBic": {
+                    "string": "21000018"
+                  },
+                  "estblishdDt": null,
+                  "regnDt": null,
+                  "regnCtry": null,
+                  "othr": null
+                }
+              },
+              "prvtId": null
+            }
+          },
+          "ctryOfRes": null,
+          "ctctDtls": null,
+          "wf_NtfctnDtls": null
+        }
+      },
+      "cdtrAcct": {
+        "com_wellsfargo_epd_upo_avro_CdtrAcct": {
+          "id": {
+            "com_wellsfargo_epd_upo_avro_Id_1": {
+              "iban": {
+                "string": "WF8901164208"
+              },
+              "othr": {
+                "com_wellsfargo_epd_upo_avro_Othr": {
+                  "id": {
+                    "string": "WF8901164208"
+                  },
+                  "schmeNm": null,
+                  "issr": null,
+                  "prxy": null
+                }
+              }
+            }
+          },
+          "tp": {
+            "string": "D"
+          },
+          "ccy": null,
+          "nm": null,
+          "wf_AcctFlg": null,
+          "wf_AcctTp": {
+            "string": "B"
+          },
+          "wf_PrdtCd": null,
+          "wf_CpnyNb": null,
+          "wf_SubPrdtCd": null
+        }
+      },
+      "cdtrAgt": {
+        "com_wellsfargo_epd_upo_avro_CdtrAgt": {
+          "finInstnId_2": {
+            "com_wellsfargo_epd_upo_avro_FinInstnId_2": {
+              "bicfi": null,
+              "uschu": null,
+              "clrSysMmbId": null,
+              "nm": {
+                "string": "BANK OF NEW YORK MELLON CORPORATION"
+              },
+              "pstlAdr_1": null,
+              "othr_2": null
+            }
+          },
+          "brnchId": {
+            "com_wellsfargo_epd_upo_avro_BrnchId_2": {
+              "id": {
+                "string": "21000018"
+              },
+              "nm": null,
+              "pstlAdr_2": null
+            }
+          }
+        }
+      },
+      "cdtrAgtAcct": null,
+      "ultmtCdtr": null,
+      "intrmyAgt1": null,
+      "intrmyAgt1Acct": null,
+      "intrmyAgt2": null,
+      "intrmyAgt2Acct": null,
+      "chqInstr": null,
+      "wf_dfinf": null,
+      "rgltryRptg": null,
+      "rltdRmtInf": null,
+      "rmtInf": null,
+      "msgRcpt": null
+    }
+  },
+  "casePmtInf": null,
+  "cstmrInf": null,
+  "wf_EvtInf": {
+    "com_wellsfargo_epd_upo_avro_Wf_EvtInf": {
+      "evtTp": null,
+      "evtId": null,
+      "evtNm": null,
+      "evtDtTm": {
+        "string": "2022-02-16T04:03:20"
+      },
+      "evtUsrId": null,
+      "evtOrgtnChnl": null,
+      "evtDesc": {
+        "string": "RecordTypeCreditor:G RecordTypeDebitor:G"
+      },
+      "evtApplSts": {
+        "string": "CMP"
+      },
+      "evtTxSts": null,
+      "evtRcncltnInf": null
+    }
+  },
+  "splmtryData": {
+    "com_wellsfargo_epd_upo_avro_SplmtryData": {
+      "createdDate": {
+        "$date": "2022-02-16T16:00:20.800Z"
+      },
+      "splmtrydataAch": null,
+      "splmtrydataCcdms": null,
+      "splmtrydataSao": null,
+      "splmtrydataWires": {
+        "com_wellsfargo_epd_upo_avro_SplmtryDataWIRES": {
+          "corssBorderIndicator": null,
+          "hsWireCustType": null,
+          "hsWireDbSubprod": null,
+          "hsWireRefAcct": null,
+          "fREFnum": {
+            "string": "20220216-5"
+          }
+        }
+      },
+      "splmtrydataBillPay": null,
+      "timestamp": {
+        "string": "16-02-2022 16:00:20"
+      },
+      "currentTimestamp": {
+        "long": {
+          "$numberLong": "1645048820000"
+        }
+      },
+      "shard_key": {
+        "string": "301 South College Street Charlotte_16-02-2022 16:00:20"
+      },
+      "payoriswells": {
+        "string": "Y"
+      },
+      "payeeiswells": {
+        "string": "N"
+      },
+      "error_msg": null
+    }
+  }
+}
