@@ -1,7 +1,9 @@
 package com.wf.stp.rbms;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wf.stp.rbms.dto.upo.Upo;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,55 +24,111 @@ import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
 import reactor.core.publisher.Mono;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.Optional;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @DisplayName("STP Integration tests")
+@Slf4j
 class RuleBasedMessageSanitizerApplicationTests {
 
-	WebTestClient webTestClient;
+	private static final Path POSITIVE_TESTCASE_DIR=Path.of("D:\\POC\\workspace\\workspace\\rbms\\src\\test\\resources\\scenarios\\positive\\input");
+	private static final Path NEGATIVE_TESTCASE_DIR=Path.of("D:\\POC\\workspace\\workspace\\rbms\\src\\test\\resources\\scenarios\\negative\\input");
 
 	@Autowired
 	private MockMvc mvc;
 
-	//@BeforeAll
-	void setup(){
-
-	}
-
-	//@BeforeEach
-	void setUp() {
-		// connect Web Client to Spring Boot application
-		String port = "8080";//System.getProperty("test.server.port");
-		webTestClient = WebTestClient.bindToServer().baseUrl("http://localhost:" + port)
-				.responseTimeout(Duration.ofSeconds(15))
-				.build();
-	}
-
 	@Test
-	@DisplayName("Check if transaction ID is 2022021600000014")
-	void Positive_CheckTransactionID() throws Exception {
+	@DisplayName("Positive test cases")
+	void Positive_CheckTransactionID() throws Exception,JsonProcessingException {
+		Files.walk(POSITIVE_TESTCASE_DIR).forEach(path -> {
+			if(!path.toFile().isDirectory()) {
+				String fileName = path.getFileName().toString();
+				log.info("Filename:" + fileName);
+				Upo inputUpo = getUPO("scenarios/positive/input/",fileName).get();
+				log.info("i/p upo:" + inputUpo);
+				Upo response = null;
+				try {
+					response = readAPIRepsonse(new ObjectMapper().writeValueAsString(inputUpo)).get();
+				} catch (JsonProcessingException e) {
+					e.printStackTrace();
+				}
+				Upo expectedUpo = getUPO("scenarios/positive/expected_op/",fileName).get();
+				boolean isReponseMatching= false;
+				try {
+					String strExpected = new ObjectMapper().writeValueAsString(expectedUpo);
+					String strResponse = new ObjectMapper().writeValueAsString(response);
+					isReponseMatching = strExpected.equalsIgnoreCase(strResponse);
+					saveFileToDisk("scenarios/positive/input/",fileName,strResponse);
+				} catch (JsonProcessingException e) {
+					e.printStackTrace();
+				}
+				log.info("Test case for scenarios/positive/input/"+ fileName +" passed:"+isReponseMatching);
+				Assert.isTrue(isReponseMatching,"Positive Test Case");
+			}
+		});
+	}
 
+	public Optional<Upo> readAPIRepsonse(String upo) {
+		try {
+			String addURI = "http://localhost:8080/api/v1/applyRules";
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Accept", "application/json");
+			headers.add("Content-Type", "application/json");
+			HttpEntity<String> entity = new HttpEntity<String>(upo, headers);
+			RestTemplate restTemplate = new RestTemplate();
+			ResponseEntity<String> response = restTemplate.postForEntity(addURI, entity, String.class);
+			return Optional.of(new ObjectMapper().readValue(response.getBody(), Upo.class));
+		}catch (Exception je){
+			//log.error("Unable to map the response to Upo object:"+je.getOriginalMessage());
+			return Optional.empty();
+		}
+	}
+
+	public boolean saveFileToDisk(String directoryPath,String fileName,String responseUpo){
+		ClassLoader classLoader = getClass().getClassLoader();
+		String absolutePathWithName  = classLoader.getResource(directoryPath+fileName).getPath().replaceAll("input","expected_op");
+		log.info("OP File Path:"+absolutePathWithName);
+		try (FileWriter file = new FileWriter(absolutePathWithName)) {
+			file.write(responseUpo);
+			file.flush();
+		} catch ( IOException e) {
+			log.error("Unable to write file to disk: "+e.fillInStackTrace());
+		}
+		return true;
+	}
+
+	public Optional<Upo> getUPO(String directoryPath, String fileName){
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		String upo = new String(classloader.getResourceAsStream("scenarios/positive/input/testcase1.json").readAllBytes());
+		try (InputStream is =classloader.getResourceAsStream(directoryPath+fileName);)
+		{
+			Upo upo = new ObjectMapper().readValue(is,Upo.class);
+			return Optional.of(upo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return Optional.empty();
+	}
 
-		String addURI = "http://localhost:8080/api/v1/applyRules";
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Accept", "application/json");
-		headers.add("Content-Type", "application/json");
-		HttpEntity<String> entity = new HttpEntity<String>(upo, headers);
+	public static void main(String... args) throws Exception {
+		Path dir = Paths.get("D:\\POC\\workspace\\workspace\\rbms\\src\\test\\resources\\scenarios");
+		Files.walk(dir).forEach(path -> showFile(path.toFile()));
+	}
 
-		RestTemplate restTemplate = new RestTemplate();
-		ResponseEntity<String> response =restTemplate.postForEntity(addURI, entity, String.class);
-
-		Assert.isTrue(response.getStatusCode().is2xxSuccessful(),"Correct status code returned");
-		Upo upoResponse = new ObjectMapper().readValue(response.getBody(),Upo.class);
-		Assert.isTrue(upoResponse.getPmtInf().getComWellsfargoEpdUpoAvroPmtInf().getPmtId().getComWellsfargoEpdUpoAvroPmtId().getTxId().getString().equalsIgnoreCase("2022021600000014"),"The transaction id is correct.");
+	public static void showFile(File file) {
+		if (file.isDirectory()) {
+			System.out.println("Directory: " + file.getAbsolutePath());
+		} else {
+			System.out.println("File: " + file.getAbsolutePath());
+		}
 	}
 
 	public static String readFileAsString(String file)throws Exception
