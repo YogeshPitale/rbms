@@ -118,19 +118,6 @@ class RuleBasedMessageSanitizerApplicationTests {
 		return Optional.empty();
 	}
 
-	public static void main(String... args) throws Exception {
-		Path dir = Paths.get("D:\\POC\\workspace\\workspace\\rbms\\src\\test\\resources\\scenarios");
-		Files.walk(dir).forEach(path -> showFile(path.toFile()));
-	}
-
-	public static void showFile(File file) {
-		if (file.isDirectory()) {
-			System.out.println("Directory: " + file.getAbsolutePath());
-		} else {
-			System.out.println("File: " + file.getAbsolutePath());
-		}
-	}
-
 	public static String readFileAsString(String file)throws Exception
 	{
 		return new String(Files.readAllBytes(Paths.get(file)));
