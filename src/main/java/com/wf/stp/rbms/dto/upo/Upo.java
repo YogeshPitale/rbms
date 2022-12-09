@@ -4,6 +4,7 @@ package com.wf.stp.rbms.dto.upo;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,13 +14,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "_id",
-    "wfPmtOrdrPrcg",
-    "pmtInf",
-    "casePmtInf",
-    "cstmrInf",
-    "wf_EvtInf",
-    "splmtryData"
+        "_id",
+        "wfPmtOrdrPrcg",
+        "pmtInf",
+        "casePmtInf",
+        "cstmrInf",
+        "wf_EvtInf",
+        "splmtryData"
 })
 @Generated("jsonschema2pojo")
 public class Upo {

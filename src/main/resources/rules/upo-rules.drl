@@ -1,0 +1,43 @@
+package com.wf.stp.rbms.dto.upo;
+
+dialect "mvel"
+
+rule "Simple Modify"
+    when
+        upo: Upo()
+    then
+        upo.setCasePmtInf("updated-from-null");
+        System.out.println("Updated casePmtInf");
+end
+
+rule "Simple Check and Modify"
+    when
+        upo: Upo(wfPmtOrdrPrcg.comWellsfargoEpdUpoAvroWfPmtOrdrPrcg.pmtRail.string == "CEO")
+    then
+        upo.setCstmrInf("updated-from-null");
+        System.out.println("Updated cstmrInf");
+end
+
+rule "Simple Check and Modify Nested Attributes"
+    when
+        upo: Upo(wfPmtOrdrPrcg.comWellsfargoEpdUpoAvroWfPmtOrdrPrcg.pmtRail.string == "CEO")
+    then
+        FREFnum fREFnum = upo.getSplmtryData().getComWellsfargoEpdUpoAvroSplmtryData().getSplmtrydataWires().getComWellsfargoEpdUpoAvroSplmtryDataWIRES().getfREFnum();
+        fREFnum.setString("GW00000005920952");
+
+        ComWellsfargoEpdUpoAvroSplmtryDataWIRES comWellsfargoEpdUpoAvroSplmtryDataWIRES = upo.getSplmtryData().getComWellsfargoEpdUpoAvroSplmtryData().getSplmtrydataWires().getComWellsfargoEpdUpoAvroSplmtryDataWIRES();
+        comWellsfargoEpdUpoAvroSplmtryDataWIRES.setfREFnum(fREFnum);
+
+        SplmtrydataWires splmtrydataWires = upo.getSplmtryData().getComWellsfargoEpdUpoAvroSplmtryData().getSplmtrydataWires();
+        splmtrydataWires.setComWellsfargoEpdUpoAvroSplmtryDataWIRES(comWellsfargoEpdUpoAvroSplmtryDataWIRES);
+
+        ComWellsfargoEpdUpoAvroSplmtryData comWellsfargoEpdUpoAvroSplmtryData = upo.getSplmtryData().getComWellsfargoEpdUpoAvroSplmtryData();
+        comWellsfargoEpdUpoAvroSplmtryData.setSplmtrydataWires(splmtrydataWires);
+
+        SplmtryData splmtryData = upo.getSplmtryData();
+        splmtryData.setComWellsfargoEpdUpoAvroSplmtryData(comWellsfargoEpdUpoAvroSplmtryData);
+
+        upo.setSplmtryData(splmtryData);
+
+        System.out.println("Updated splmtryData.comWellsfargoEpdUpoAvroSplmtryData.splmtrydataWires.comWellsfargoEpdUpoAvroSplmtryDataWIRES.fREFnum.string");
+end
