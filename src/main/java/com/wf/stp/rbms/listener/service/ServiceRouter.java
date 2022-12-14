@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ServiceRouter {
 
-    private static final String BASE_PACKAGE="com.wf.stp.rbms";
+    private static final String BASE_PACKAGE = "com.wf.stp.rbms";
 
     @Autowired
     private ApplicationContext context;
@@ -27,18 +26,18 @@ public class ServiceRouter {
     public Upo applySanitization(Upo upoIn) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Upo upoOut = upoIn;
         List<Class<?>> routerClasses = RbmsUTIL.findAllRoutingClasses(BASE_PACKAGE);
-        log.info("No of classes:"+routerClasses.size());
-        for(int priority : ServicePriority.getServicePriorityMap().keySet()){
-            Class clazz = routerClasses.stream().filter( aClass -> aClass.getCanonicalName().equalsIgnoreCase(ServicePriority.getServicePriorityMap().get(priority))).collect(Collectors.toList()).get(0);
-            log.info("Current class name:"+clazz.getName());
-            RuleService service = (RuleService)context.getBean(clazz);
-            if(service.verify(upoOut)){
+        log.info("No of classes:" + routerClasses.size());
+        for (int priority : ServicePriority.getServicePriorityMap().keySet()) {
+            Class clazz = routerClasses.stream().filter(aClass -> aClass.getCanonicalName().equalsIgnoreCase(ServicePriority.getServicePriorityMap().get(priority))).collect(Collectors.toList()).get(0);
+            log.info("Current class name:" + clazz.getName());
+            RuleService service = (RuleService) context.getBean(clazz);
+            if (service.verify(upoOut)) {
                 log.info("Applying Transformation");
-                upoOut=service.applyTransformation(upoOut);
-            }else
+                upoOut = service.applyTransformation(upoOut);
+            } else
                 log.info("Transformation not required");
         }
-     return upoOut;
+        return upoOut;
     }
 
     public static void main(String[] args) {
@@ -54,6 +53,7 @@ public class ServiceRouter {
             e.printStackTrace();
         }
     }
+
     public void handleRecovery(ConsumerRecord<String, String> consumerRecord) {
 
     }

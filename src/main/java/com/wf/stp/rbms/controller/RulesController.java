@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.lang.reflect.InvocationTargetException;
-
 @Controller
 @Slf4j
 @RequestMapping("/api/v1")
@@ -22,11 +20,11 @@ public class RulesController {
     ServiceRouter serviceRouter;
 
     @PostMapping("/applyRules")
-    public ResponseEntity<Upo> applyRules(@RequestBody Upo upoIn){
+    public ResponseEntity<Upo> applyRules(@RequestBody Upo upoIn) {
         try {
             Upo upoOut = serviceRouter.applySanitization(upoIn);
             return new ResponseEntity<>(upoOut, HttpStatus.OK);
-        } catch  (Exception e) {
+        } catch (Exception e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
