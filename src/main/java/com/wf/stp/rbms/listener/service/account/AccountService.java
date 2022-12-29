@@ -4,7 +4,6 @@ import com.wf.stp.rbms.dto.upo.Upo;
 import com.wf.stp.rbms.router.RuleService;
 import com.wf.stp.rbms.service.UpoDroolsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service

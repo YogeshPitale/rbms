@@ -1,51 +1,46 @@
-
 package com.wf.stp.rbms.dto.upo;
 
+import com.fasterxml.jackson.annotation.*;
+
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "pmtId",
-    "cdtDbtInd",
-    "amt",
-    "xchgRateInf",
-    "chrgBr",
-    "wf_CutoffDtTm",
-    "wf_XprtnDays",
-    "instrForCdtrAgt",
-    "instrForNxtAgt",
-    "InstrForDbtrAgt",
-    "chrgsAcct",
-    "chrgsAcctAgt",
-    "initgPty",
-    "fwdgAgt",
-    "dbtr",
-    "dbtrAcct",
-    "dbtrAgt",
-    "ultmtDbtr",
-    "cdtr",
-    "cdtrAcct",
-    "cdtrAgt",
-    "cdtrAgtAcct",
-    "ultmtCdtr",
-    "intrmyAgt1",
-    "intrmyAgt1Acct",
-    "intrmyAgt2",
-    "intrmyAgt2Acct",
-    "chqInstr",
-    "wf_dfinf",
-    "rgltryRptg",
-    "rltdRmtInf",
-    "rmtInf",
-    "msgRcpt"
+        "pmtId",
+        "cdtDbtInd",
+        "amt",
+        "xchgRateInf",
+        "chrgBr",
+        "wf_CutoffDtTm",
+        "wf_XprtnDays",
+        "instrForCdtrAgt",
+        "instrForNxtAgt",
+        "InstrForDbtrAgt",
+        "chrgsAcct",
+        "chrgsAcctAgt",
+        "initgPty",
+        "fwdgAgt",
+        "dbtr",
+        "dbtrAcct",
+        "dbtrAgt",
+        "ultmtDbtr",
+        "cdtr",
+        "cdtrAcct",
+        "cdtrAgt",
+        "cdtrAgtAcct",
+        "ultmtCdtr",
+        "intrmyAgt1",
+        "intrmyAgt1Acct",
+        "intrmyAgt2",
+        "intrmyAgt2Acct",
+        "chqInstr",
+        "wf_dfinf",
+        "rgltryRptg",
+        "rltdRmtInf",
+        "rmtInf",
+        "msgRcpt"
 })
 @Generated("jsonschema2pojo")
 public class ComWellsfargoEpdUpoAvroPmtInf {

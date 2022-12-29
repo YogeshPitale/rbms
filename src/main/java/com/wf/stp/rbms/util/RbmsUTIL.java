@@ -7,7 +7,10 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider;
 import org.springframework.core.type.filter.AssignableTypeFilter;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
 
 @Slf4j
 public class RbmsUTIL {
@@ -19,10 +22,10 @@ public class RbmsUTIL {
         provider.addIncludeFilter(new AssignableTypeFilter(RuleService.class));
         for (BeanDefinition beanDefinition : provider.findCandidateComponents(packageName)) {
             try {
-                Class<?> clazz =Class.forName(beanDefinition.getBeanClassName());
+                Class<?> clazz = Class.forName(beanDefinition.getBeanClassName());
                 Class<?>[] interfaces = clazz.getInterfaces();
-                for(Class<?> _interface: interfaces){
-                    if(_interface.getSimpleName().equalsIgnoreCase(RuleService.class.getSimpleName()))
+                for (Class<?> _interface : interfaces) {
+                    if (_interface.getSimpleName().equalsIgnoreCase(RuleService.class.getSimpleName()))
                         result.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
@@ -33,10 +36,10 @@ public class RbmsUTIL {
             @SneakyThrows
             @Override
             public int compare(Class<?> o1, Class<?> o2) {
-                return ((RuleService)o1.getConstructor().newInstance()).getPriority()-((RuleService)o2.getConstructor().newInstance()).getPriority();
+                return ((RuleService) o1.getConstructor().newInstance()).getPriority() - ((RuleService) o2.getConstructor().newInstance()).getPriority();
             }
         });
-        result.stream().forEach(r->log.info(r.getSimpleName()));
+        result.stream().forEach(r -> log.info(r.getSimpleName()));
         return result;
     }
 }
