@@ -1,6 +1,6 @@
 {
   "_id": {
-    "$oid": "620d037c0ec8e032b5cfff06"
+    "$oid": "620d73f40ec8e032b5d000ee"
   },
   "wfPmtOrdrPrcg": {
     "com_wellsfargo_epd_upo_avro_WfPmtOrdrPrcg": {
@@ -17,16 +17,16 @@
       "applCstmrId": null,
       "applUsrId": null,
       "pmtDesc": {
-        "string": "{1100}30T N\n{1110}02160900FT01\n{1120}20220216I1B78A1R00001302160900FT01\n{1510}1000\n{1520}20220216B1Q9362C000024\n{2000}000008470700\n{3100}026003780DBAG AMERICAS NYC*\n{3320}0216639661000083*\n{3400}121000248WELLS FARGO NA*\n{3600}CTP\n{3620}3*\nE492771B-08A8-4689-BDB0-E6A4B8C48CFC*\n{3700}SUSD0,*\nUSD0,*\nUSD21,*\n{3710}USD84728,*\n{4200}D4364118117*\nETQ, INC.*\n700 DISTRICT AVENUE, 9TH FLOOR*\nUS*\n{5010}/DE05370700600132909300*\n1/TUV RHEINLAND AG*\n2/AM GRAUEN STEIN 1*\n3/DE/KOLN,51105*\n{5100}BDEUTDEDKXXX*\nDEUTSCHE BANK AG*\nKOELN*\nKOELN GERMANY*\n{5200}BDEUTGB2L*\nDEUTSCHE BANK AG LDN SHARED NOSTRO*\nWINCHESTER HOUSE*\n1 GREAT WINCHESTER STREET*\nLONDON EC2N 2DB UK*\n{6000}SEE PAYMENT ADVICE NOTE FROM 14.02.*\n::199\n:20:220216000632/006\n:21:0216639661000083\n:79://2202160800-0600\n//ACCC\n//WFBIUS60XXX\n//USD84707,\n//:71F:USD0,\n//:71F:USD0,\n//:71F:USD21,\n//:71F:USD0,\n"
+        "string": "*FTR000000000220220216-5          NRFUSDUSD00000000000078.SFTRN            121\n2FTR 220216            FED\n5FTR                                                                    PBJ\nORG=G/001000594464228\n-WF PORT OPS PLEDGE-SUS OPS\n-90 S 7TH ST 13TH FL\n-MINNEAPOLIS MN 55402-3903\nSRF=1BFD.OAQ\nORF=20220216-5\nSBK=A/121000248\nDBT=G/01000594464228\nBBK=A/021000018\n-Bank of New York Mellon\nBNF= /WF 8901164208\n-301 South College Street Charlotte\n"
       },
       "thrdPtyId": null,
       "pmtOrdrId": {
-        "string": "2022021600000632"
+        "string": "2022021600000058"
       },
       "acctSvcrId": null,
       "clrSysInf": null,
       "applFileId": {
-        "string": "2022021600000632"
+        "string": "2022021600000058"
       },
       "pmtErr": null,
       "tplInf": null,
@@ -42,7 +42,7 @@
           "instrId": null,
           "endToEndId": null,
           "txId": {
-            "string": "2022021600000632"
+            "string": "2022021600000058"
           },
           "msgId": null,
           "orgnlInstrId": null,
@@ -58,7 +58,7 @@
           "instdAmt": {
             "com_wellsfargo_epd_upo_avro_InstdAmt": {
               "amt": {
-                "string": "84707.00"
+                "string": "78.00"
               },
               "ccy": {
                 "string": "USD"
@@ -68,7 +68,7 @@
           "dbtAmt": {
             "com_wellsfargo_epd_upo_avro_DbtAmt": {
               "amt": {
-                "string": "84707.00"
+                "string": "78.00"
               },
               "ccy": {
                 "string": "USD"
@@ -78,7 +78,7 @@
           "cdtAmt": {
             "com_wellsfargo_epd_upo_avro_CdtAmt": {
               "amt": {
-                "string": "84707.00"
+                "string": "78.00"
               },
               "ccy": {
                 "string": "USD"
@@ -113,7 +113,7 @@
       "dbtr": {
         "com_wellsfargo_epd_upo_avro_Dbtr": {
           "nm": {
-            "string": "1/TUV RHEINLAND AG"
+            "string": "WF PORT OPS PLEDGE-SUS OPS 465936WB"
           },
           "shrtNm": null,
           "gvnNm": null,
@@ -125,7 +125,7 @@
               "adrLine": {
                 "array": [
                   {
-                    "string": "31 W 52ND ST NEW YORK CITY NY US 10019-2601 "
+                    "string": "MAC A0194-290 45 FREMONT ST 29TH FL SAN FRANCISCO CA US 94105-2204"
                   }
                 ]
               },
@@ -133,11 +133,11 @@
               "dept": null,
               "subDept": null,
               "strtNm": {
-                "string": "31 W 52ND ST NEW YORK CITY NY US 10019-2601 "
+                "string": "MAC A0194-290 45 FREMONT ST 29TH FL SAN FRANCISCO CA US 94105-2204"
               },
               "bldgNb": null,
               "pstCd": {
-                "string": "10019-2601"
+                "string": "94105-2204"
               },
               "twnNm": null,
               "ctrySubDvsn": null,
@@ -150,9 +150,7 @@
             "com_wellsfargo_epd_upo_avro_Id": {
               "orgId": {
                 "com_wellsfargo_epd_upo_avro_OrgId": {
-                  "anyBic": {
-                    "string": "DEUTDEDK"
-                  },
+                  "anyBic": null,
                   "estblishdDt": null,
                   "regnDt": null,
                   "regnCtry": null,
@@ -172,12 +170,12 @@
           "id": {
             "com_wellsfargo_epd_upo_avro_Id_1": {
               "iban": {
-                "string": "DE05370700600132909300"
+                "string": "001000594464228"
               },
               "othr": {
                 "com_wellsfargo_epd_upo_avro_Othr": {
                   "id": {
-                    "string": "DE05370700600132909300"
+                    "string": "001000594464228"
                   },
                   "schmeNm": null,
                   "issr": null,
@@ -194,7 +192,7 @@
             }
           },
           "tp": {
-            "string": "S"
+            "string": "G"
           },
           "ccy": null,
           "nm": null,
@@ -209,21 +207,26 @@
         "com_wellsfargo_epd_upo_avro_DbtrAgt": {
           "finInstnId_2": {
             "com_wellsfargo_epd_upo_avro_FinInstnId_2": {
-              "bicfi": null,
+              "bicfi": "BBWIUS44",
               "uschu": null,
               "clrSysMmbId": null,
               "nm": {
-                "string": "DEUTSCHE BANK AG"
+                "string": ""
               },
-              "pstlAdr_1": null,
-              "othr_2": null
+              "pstlAdr_1": {
+                "string": ""
+              },
+              "twnNm": {
+                "string": ""
+              },
+              "ctry": {
+                "string": ""
+              }
             }
           },
           "brnchId": {
             "com_wellsfargo_epd_upo_avro_BrnchId": {
-              "id": {
-                "string": "DEUTDEDK"
-              },
+              "id": null,
               "nm": null,
               "pstlAdr_1": null
             }
@@ -234,7 +237,7 @@
       "cdtr": {
         "com_wellsfargo_epd_upo_avro_Cdtr": {
           "nm": {
-            "string": "ETQ LLC"
+            "string": "301 South College Street Charlotte"
           },
           "shrtNm": null,
           "gvnNm": null,
@@ -246,7 +249,7 @@
               "adrLine": {
                 "array": [
                   {
-                    "string": "31 SHAW ST WEYMOUTH             MA 02191-1841 "
+                    "string": "MAC A0194-290 45 FREMONT ST 29TH FL SAN FRANCISCO CA US 94105-2204"
                   }
                 ]
               },
@@ -254,11 +257,11 @@
               "dept": null,
               "subDept": null,
               "strtNm": {
-                "string": "31 SHAW ST WEYMOUTH             MA 02191-1841 "
+                "string": "MAC A0194-290 45 FREMONT ST 29TH FL SAN FRANCISCO CA US 94105-2204"
               },
               "bldgNb": null,
               "pstCd": {
-                "string": "02191-1841"
+                "string": "50266-9310"
               },
               "twnNm": null,
               "ctrySubDvsn": null,
@@ -272,25 +275,12 @@
               "orgId": {
                 "com_wellsfargo_epd_upo_avro_OrgId": {
                   "anyBic": {
-                    "string": "121000248"
+                    "string": "21000018"
                   },
                   "estblishdDt": null,
                   "regnDt": null,
                   "regnCtry": null,
-                  "othr": {
-                    "array": [
-                      {
-                        "id": {
-                          "string": "3829206"
-                        },
-                        "schmeNm": {
-                          "string": "EPIC"
-                        },
-                        "issr": null,
-                        "prxy": null
-                      }
-                    ]
-                  }
+                  "othr": null
                 }
               },
               "prvtId": null
@@ -306,12 +296,12 @@
           "id": {
             "com_wellsfargo_epd_upo_avro_Id_1": {
               "iban": {
-                "string": "00000000000004364118117"
+                "string": "WF8901164208"
               },
               "othr": {
                 "com_wellsfargo_epd_upo_avro_Othr": {
                   "id": {
-                    "string": "00000000000004364118117"
+                    "string": "WF8901164208"
                   },
                   "schmeNm": null,
                   "issr": null,
@@ -327,7 +317,7 @@
           "nm": null,
           "wf_AcctFlg": null,
           "wf_AcctTp": {
-            "string": "C"
+            "string": "B"
           },
           "wf_PrdtCd": null,
           "wf_CpnyNb": null,
@@ -338,26 +328,21 @@
         "com_wellsfargo_epd_upo_avro_CdtrAgt": {
           "finInstnId_2": {
             "com_wellsfargo_epd_upo_avro_FinInstnId_2": {
-              "bicfi": "ACBBUS6",
+              "bicfi": null,
               "uschu": null,
               "clrSysMmbId": null,
               "nm": {
-                "string": "AMERICAN BUSINESS BANK"
+                "string": "BANK OF NEW YORK MELLON CORPORATION"
               },
-              "pstlAdr_1": {
-                "string": "400 S. HOPE STREET"
-              },
-              "twnNm": {
-                "string": "LOS ANGELES"
-              },
-              "ctry": {
-                "string": "US"
-              }
+              "pstlAdr_1": null,
+              "othr_2": null
             }
           },
           "brnchId": {
             "com_wellsfargo_epd_upo_avro_BrnchId_2": {
-              "id": null,
+              "id": {
+                "string": "21000018"
+              },
               "nm": null,
               "pstlAdr_2": null
             }
@@ -386,12 +371,12 @@
       "evtId": null,
       "evtNm": null,
       "evtDtTm": {
-        "string": "2022-02-16T08:00:12"
+        "string": "2022-02-16T04:03:20"
       },
       "evtUsrId": null,
       "evtOrgtnChnl": null,
       "evtDesc": {
-        "string": "RecordTypeCreditor:D RecordTypeDebitor:A"
+        "string": "RecordTypeCreditor:G RecordTypeDebitor:G"
       },
       "evtApplSts": {
         "string": "CMP"
@@ -403,7 +388,7 @@
   "splmtryData": {
     "com_wellsfargo_epd_upo_avro_SplmtryData": {
       "createdDate": {
-        "$date": "2022-02-16T08:00:28.516Z"
+        "$date": "2022-02-16T16:00:20.800Z"
       },
       "splmtrydataAch": null,
       "splmtrydataCcdms": null,
@@ -414,26 +399,28 @@
           "hsWireCustType": null,
           "hsWireDbSubprod": null,
           "hsWireRefAcct": null,
-          "fREFnum": null
+          "fREFnum": {
+            "string": "20220216-5"
+          }
         }
       },
       "splmtrydataBillPay": null,
       "timestamp": {
-        "string": "16-02-2022 08:00:28"
+        "string": "16-02-2022 16:00:20"
       },
       "currentTimestamp": {
         "long": {
-          "$numberLong": "1645020028000"
+          "$numberLong": "1645048820000"
         }
       },
       "shard_key": {
-        "string": "ETQ LLC_16-02-2022 08:00:28"
+        "string": "301 South College Street Charlotte_16-02-2022 16:00:20"
       },
       "payoriswells": {
-        "string": "N"
+        "string": "Y"
       },
       "payeeiswells": {
-        "string": "Y"
+        "string": "N"
       },
       "error_msg": null
     }
