@@ -22,7 +22,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
-import reactor.core.publisher.Mono;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -40,8 +39,8 @@ import java.util.Optional;
 @Slf4j
 class RuleBasedMessageSanitizerApplicationTests {
 
-	private static final Path POSITIVE_TESTCASE_DIR=Path.of("D:\\POC\\workspace\\workspace\\rbms\\src\\test\\resources\\scenarios\\positive\\input");
-	private static final Path NEGATIVE_TESTCASE_DIR=Path.of("D:\\POC\\workspace\\workspace\\rbms\\src\\test\\resources\\scenarios\\negative\\input");
+	private static final Path POSITIVE_TESTCASE_DIR=Path.of("src\\test\\resources\\scenarios\\positive\\input");
+	private static final Path NEGATIVE_TESTCASE_DIR=Path.of("src\\test\\resources\\scenarios\\negative\\input");
 
 	@Autowired
 	private MockMvc mvc;
@@ -79,7 +78,7 @@ class RuleBasedMessageSanitizerApplicationTests {
 
 	public Optional<Upo> readAPIRepsonse(String upo) {
 		try {
-			String addURI = "http://localhost:8080/api/v1/applyRules";
+			String addURI = "http://localhost:8090/api/v1/applyRules";
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("Accept", "application/json");
 			headers.add("Content-Type", "application/json");
