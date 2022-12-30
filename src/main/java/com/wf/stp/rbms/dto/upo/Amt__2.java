@@ -13,10 +13,16 @@ import java.util.Map;
 @Generated("jsonschema2pojo")
 public class Amt__2 {
 
+    private double amount=0L;
+
     @JsonProperty("string")
     private String string;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public double getAmount() {
+        return amount;
+    }
 
     @JsonProperty("string")
     public String getString() {
@@ -26,6 +32,7 @@ public class Amt__2 {
     @JsonProperty("string")
     public void setString(String string) {
         this.string = string;
+        this.amount= Double.parseDouble(string);
     }
 
     @JsonAnyGetter

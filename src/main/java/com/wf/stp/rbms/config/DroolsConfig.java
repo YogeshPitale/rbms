@@ -29,6 +29,13 @@ public class DroolsConfig {
     private String RULES_CUSTOMER_RULES_DRL_FTP_PATH;
     @Value("${RULES_CUSTOMER_RULES_XLSX_FTP_PATH}")
     private String RULES_CUSTOMER_RULES_XLSX_FTP_PATH;
+
+    @Value("${AGENDA_GROUPS_URL}")
+    private String AGENDA_GROUPS_URL;
+
+    @Value("${AGENDA_GROUPS_URL_LOCAL}")
+    private String AGENDA_GROUPS_URL_LOCAL;
+
     //    private final File RULES_CUSTOMER_RULES_DRL_FTP = new File(RULES_CUSTOMER_RULES_DRL_FTP_PATH);
     //    private final File RULES_CUSTOMER_RULES_XLSX_FTP = new File(RULES_CUSTOMER_RULES_XLSX_FTP_PATH);
     private static final KieServices kieServices = KieServices.Factory.get();
@@ -37,7 +44,7 @@ public class DroolsConfig {
     public KieContainer kieContainer() {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
 //        kieFileSystem.write(ResourceFactory.newClassPathResource(RULES_CUSTOMER_RULES_DRL));
-        kieFileSystem.write(ResourceFactory.newUrlResource(RULES_CUSTOMER_RULES_XLSX_URL));
+        kieFileSystem.write(ResourceFactory.newClassPathResource(AGENDA_GROUPS_URL_LOCAL));
 //        kieFileSystem.write(ResourceFactory.newFileResource(RULES_CUSTOMER_RULES_XLSX_FTP));
         KieBuilder kb = kieServices.newKieBuilder(kieFileSystem);
         kb.buildAll();
