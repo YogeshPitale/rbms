@@ -7,12 +7,15 @@ import org.kie.api.builder.KieModule;
 import org.kie.api.runtime.KieContainer;
 import org.kie.internal.io.ResourceFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.io.File;
 
 @Configuration
+@RefreshScope
+// @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class DroolsConfig {
     // Reading from resources:
     @Value("${RULES_CUSTOMER_RULES_DRL}")
