@@ -15,30 +15,14 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class DroolsConfig {
-    // Reading from resources:
-    @Value("${RULES_CUSTOMER_RULES_DRL}")
-    private String RULES_CUSTOMER_RULES_DRL;
-    @Value("${RULES_CUSTOMER_RULES_XLSX}")
-    private String RULES_CUSTOMER_RULES_XLSX;
-    // Reading from URL(GitHub):
+
     @Value("${RULES_CUSTOMER_RULES_XLSX_URL}")
     private String RULES_CUSTOMER_RULES_XLSX_URL;
     @Value("${RULES_CUSTOMER_RULES_DRL_URL}")
     private String RULES_CUSTOMER_RULES_DRL_URL;
-    // Reading from File System:
-    @Value("${RULES_CUSTOMER_RULES_DRL_FTP_PATH}")
-    private String RULES_CUSTOMER_RULES_DRL_FTP_PATH;
-    @Value("${RULES_CUSTOMER_RULES_XLSX_FTP_PATH}")
-    private String RULES_CUSTOMER_RULES_XLSX_FTP_PATH;
-
     @Value("${AGENDA_GROUPS_URL}")
     private String AGENDA_GROUPS_URL;
 
-    @Value("${AGENDA_GROUPS_URL_LOCAL}")
-    private String AGENDA_GROUPS_URL_LOCAL;
-
-    //    private final File RULES_CUSTOMER_RULES_DRL_FTP = new File(RULES_CUSTOMER_RULES_DRL_FTP_PATH);
-    //    private final File RULES_CUSTOMER_RULES_XLSX_FTP = new File(RULES_CUSTOMER_RULES_XLSX_FTP_PATH);
     private static final KieServices kieServices = KieServices.Factory.get();
 
     @Bean
@@ -46,9 +30,9 @@ public class DroolsConfig {
     @RefreshScope
     public KieContainer kieContainer() {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
-//        kieFileSystem.write(ResourceFactory.newClassPathResource(RULES_CUSTOMER_RULES_DRL));
-        kieFileSystem.write(ResourceFactory.newClassPathResource(AGENDA_GROUPS_URL_LOCAL));
-//        kieFileSystem.write(ResourceFactory.newFileResource(RULES_CUSTOMER_RULES_XLSX_FTP));
+        kieFileSystem.write(ResourceFactory.newClassPathResource(RULES_CUSTOMER_RULES_DRL_URL));
+        // kieFileSystem.write(ResourceFactory.newClassPathResource(AGENDA_GROUPS_URL));
+        // kieFileSystem.write(ResourceFactory.newClassPathResource(RULES_CUSTOMER_RULES_XLSX_URL));
         KieBuilder kb = kieServices.newKieBuilder(kieFileSystem);
         kb.buildAll();
         KieModule kieModule = kb.getKieModule();
