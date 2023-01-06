@@ -1,6 +1,5 @@
 package com.wf.stp.rbms.router;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -10,8 +9,8 @@ public enum ServicePriority {
     ACCOUNTSERVICE(3, "com.wf.stp.rbms.listener.service.account.AccountService"),
     TESTSERVICE(4, "com.wf.stp.rbms.listener.service.test.TestService");
 
-    public String service;
-    public int priority;
+    private String service;
+    private int priority;
 
     private static final Map<Integer, String> SERVICE_PRIORITY_MAP = new TreeMap<>();
 
@@ -22,7 +21,7 @@ public enum ServicePriority {
     }
 
     public static Map<Integer, String> getServicePriorityMap() {
-        return SERVICE_PRIORITY_MAP;
+        return new TreeMap<>(SERVICE_PRIORITY_MAP);
     }
 
     ServicePriority(int priority, String service) {

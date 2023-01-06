@@ -2,7 +2,6 @@ package com.wf.stp.rbms.listener.service.credit;
 
 import com.wf.stp.rbms.dto.upo.Upo;
 import com.wf.stp.rbms.router.RuleService;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
