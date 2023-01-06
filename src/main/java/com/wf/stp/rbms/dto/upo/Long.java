@@ -1,36 +1,31 @@
-
 package com.wf.stp.rbms.dto.upo;
 
+import com.fasterxml.jackson.annotation.*;
+
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "$numberLong"
+        "_numberLong"
 })
 @Generated("jsonschema2pojo")
 public class Long {
 
-    @JsonProperty("$numberLong")
-    private String $numberLong;
+    @JsonProperty("_numberLong")
+    private String _numberLong;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("$numberLong")
-    public String get$numberLong() {
-        return $numberLong;
+    @JsonProperty("_numberLong")
+    public String get_numberLong() {
+        return _numberLong;
     }
 
-    @JsonProperty("$numberLong")
-    public void set$numberLong(String $numberLong) {
-        this.$numberLong = $numberLong;
+    @JsonProperty("_numberLong")
+    public void set_numberLong(String _numberLong) {
+        this._numberLong = _numberLong;
     }
 
     @JsonAnyGetter

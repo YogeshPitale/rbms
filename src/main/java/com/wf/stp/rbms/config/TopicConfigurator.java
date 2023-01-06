@@ -10,14 +10,14 @@ import org.springframework.kafka.config.TopicBuilder;
 @Profile("local")
 public class TopicConfigurator {
 
-	@Bean
-	public NewTopic createTopic_upo_in() {
-		return TopicBuilder.name("upo-in").partitions(2).replicas(1).build();
-	}
+    @Bean
+    public NewTopic createTopic_upo_in() {
+        return TopicBuilder.name("upo-in").partitions(2).replicas(1).build();
+    }
 
-	@Bean
-	public NewTopic createTopic_upo_out() {
-		return TopicBuilder.name("upo-out").partitions(2).replicas(1).build();
-	}
+    @Bean
+    public NewTopic createTopic_upo_out() {
+        return TopicBuilder.name("upo-out").partitions(2).replicas(1).build();
+    }
 
 }

@@ -26,68 +26,68 @@ import java.util.Map;
 @ComponentScan(basePackages = "com.wf.psrm.domain")
 public class UPOConsumerConfig {
 
-	@Autowired
-	ServiceRouter serviceRouter;
+    @Autowired
+    ServiceRouter serviceRouter;
 
-	@SuppressWarnings("deprecation")
-	@Bean
-	ConcurrentKafkaListenerContainerFactory<?, ?> kafkaListenerContainerFactory(
-			ConcurrentKafkaListenerContainerFactoryConfigurer configurer,
-			ConsumerFactory<Object, Object> kafkaConsumerFactory) {
-		ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
-		configurer.configure(factory, kafkaConsumerFactory);
-		factory.setConcurrency(3);
-		// factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL);
-		factory.setErrorHandler(((thrownException, data) -> {
-			log.info("Exception in consumerConfig is {} and the record is {}", thrownException.getMessage(), data);
-			// persist
-		}));
-		factory.setRetryTemplate(retryTemplate());
-		factory.setRecoveryCallback((context -> {
-			if (context.getLastThrowable().getCause() instanceof RecoverableDataAccessException) {
-				// invoke recovery logic
-				log.info("Inside the recoverable logic");
-				/*
-				 * Arrays.asList(context.attributeNames()) .forEach(attributeName -> {
-				 * log.info("Attribute name is : {} ", attributeName);
-				 * log.info("Attribute Value is : {} ", context.getAttribute(attributeName));
-				 * });
-				 */
+    @SuppressWarnings("deprecation")
+    @Bean
+    ConcurrentKafkaListenerContainerFactory<?, ?> kafkaListenerContainerFactory(
+            ConcurrentKafkaListenerContainerFactoryConfigurer configurer,
+            ConsumerFactory<Object, Object> kafkaConsumerFactory) {
+        ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        configurer.configure(factory, kafkaConsumerFactory);
+        factory.setConcurrency(3);
+        // factory.getContainerProperties().setAckMode(ContainerProperties.AckMode.MANUAL);
+        factory.setErrorHandler(((thrownException, data) -> {
+            log.info("Exception in consumerConfig is {} and the record is {}", thrownException.getMessage(), data);
+            // persist
+        }));
+        factory.setRetryTemplate(retryTemplate());
+        factory.setRecoveryCallback((context -> {
+            if (context.getLastThrowable().getCause() instanceof RecoverableDataAccessException) {
+                // invoke recovery logic
+                log.info("Inside the recoverable logic");
+                /*
+                 * Arrays.asList(context.attributeNames()) .forEach(attributeName -> {
+                 * log.info("Attribute name is : {} ", attributeName);
+                 * log.info("Attribute Value is : {} ", context.getAttribute(attributeName));
+                 * });
+                 */
 
-				@SuppressWarnings("unchecked")
-				ConsumerRecord<String, String> consumerRecord = (ConsumerRecord<String, String>) context
-						.getAttribute("record");
-				serviceRouter.handleRecovery(consumerRecord);
-			} else {
-				log.info("Inside the non recoverable logic");
-				throw new RuntimeException(context.getLastThrowable().getMessage());
-			}
+                @SuppressWarnings("unchecked")
+                ConsumerRecord<String, String> consumerRecord = (ConsumerRecord<String, String>) context
+                        .getAttribute("record");
+                serviceRouter.handleRecovery(consumerRecord);
+            } else {
+                log.info("Inside the non recoverable logic");
+                throw new RuntimeException(context.getLastThrowable().getMessage());
+            }
 
-			return null;
-		}));
-		return factory;
-	}
+            return null;
+        }));
+        return factory;
+    }
 
-	private RetryTemplate retryTemplate() {
+    private RetryTemplate retryTemplate() {
 
-		FixedBackOffPolicy fixedBackOffPolicy = new FixedBackOffPolicy();
-		fixedBackOffPolicy.setBackOffPeriod(1000);
-		RetryTemplate retryTemplate = new RetryTemplate();
-		retryTemplate.setRetryPolicy(simpleRetryPolicy());
-		retryTemplate.setBackOffPolicy(fixedBackOffPolicy);
-		return retryTemplate;
-	}
+        FixedBackOffPolicy fixedBackOffPolicy = new FixedBackOffPolicy();
+        fixedBackOffPolicy.setBackOffPeriod(1000);
+        RetryTemplate retryTemplate = new RetryTemplate();
+        retryTemplate.setRetryPolicy(simpleRetryPolicy());
+        retryTemplate.setBackOffPolicy(fixedBackOffPolicy);
+        return retryTemplate;
+    }
 
-	private RetryPolicy simpleRetryPolicy() {
+    private RetryPolicy simpleRetryPolicy() {
 
-		/*
-		 * SimpleRetryPolicy simpleRetryPolicy = new SimpleRetryPolicy();
-		 * simpleRetryPolicy.setMaxAttempts(3);
-		 */
-		Map<Class<? extends Throwable>, Boolean> exceptionsMap = new HashMap<>();
-		exceptionsMap.put(IllegalArgumentException.class, false);
-		exceptionsMap.put(RecoverableDataAccessException.class, true);
-		SimpleRetryPolicy simpleRetryPolicy = new SimpleRetryPolicy(3, exceptionsMap, true);
-		return simpleRetryPolicy;
-	}
+        /*
+         * SimpleRetryPolicy simpleRetryPolicy = new SimpleRetryPolicy();
+         * simpleRetryPolicy.setMaxAttempts(3);
+         */
+        Map<Class<? extends Throwable>, Boolean> exceptionsMap = new HashMap<>();
+        exceptionsMap.put(IllegalArgumentException.class, false);
+        exceptionsMap.put(RecoverableDataAccessException.class, true);
+        SimpleRetryPolicy simpleRetryPolicy = new SimpleRetryPolicy(3, exceptionsMap, true);
+        return simpleRetryPolicy;
+    }
 }
