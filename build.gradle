@@ -2,10 +2,10 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.6'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-    // id "com.github.spotbugs" version "5.0.13"
+    id "com.github.spotbugs" version "5.0.13"
 }
 
-// apply { plugin("com.github.spotbugs") }
+apply { plugin("com.github.spotbugs") }
 
 group = 'com.wf.stp'
 version = '0.0.1-SNAPSHOT'
@@ -57,7 +57,6 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-/*
 spotbugsMain {
     reports {
         xml.enabled = false
@@ -70,4 +69,4 @@ spotbugsTest {
         xml.enabled = false
         html.enabled = true
     }
-}*/
+}

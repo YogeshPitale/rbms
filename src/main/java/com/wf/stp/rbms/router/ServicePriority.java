@@ -9,9 +9,6 @@ public enum ServicePriority {
     ACCOUNTSERVICE(3, "com.wf.stp.rbms.listener.service.account.AccountService"),
     TESTSERVICE(4, "com.wf.stp.rbms.listener.service.test.TestService");
 
-    public String service;
-    public int priority;
-
     private static final Map<Integer, String> SERVICE_PRIORITY_MAP = new TreeMap<>();
 
     static {
@@ -20,12 +17,15 @@ public enum ServicePriority {
         }
     }
 
-    public static Map<Integer, String> getServicePriorityMap() {
-        return SERVICE_PRIORITY_MAP;
-    }
+    public String service;
+    public int priority;
 
     ServicePriority(int priority, String service) {
         this.priority = priority;
         this.service = service;
+    }
+
+    public static Map<Integer, String> getServicePriorityMap() {
+        return SERVICE_PRIORITY_MAP;
     }
 }
