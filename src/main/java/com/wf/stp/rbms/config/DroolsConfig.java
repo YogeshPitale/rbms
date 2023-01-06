@@ -7,29 +7,19 @@ import org.kie.api.builder.KieModule;
 import org.kie.api.runtime.KieContainer;
 import org.kie.internal.io.ResourceFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.io.File;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 public class DroolsConfig {
-    // Reading from resources:
-    @Value("${RULES_CUSTOMER_RULES_DRL}")
-    private String RULES_CUSTOMER_RULES_DRL;
-    @Value("${RULES_CUSTOMER_RULES_XLSX}")
-    private String RULES_CUSTOMER_RULES_XLSX;
-    // Reading from URL(GitHub):
+
     @Value("${RULES_CUSTOMER_RULES_XLSX_URL}")
     private String RULES_CUSTOMER_RULES_XLSX_URL;
     @Value("${RULES_CUSTOMER_RULES_DRL_URL}")
     private String RULES_CUSTOMER_RULES_DRL_URL;
-    // Reading from File System:
-    @Value("${RULES_CUSTOMER_RULES_DRL_FTP_PATH}")
-    private String RULES_CUSTOMER_RULES_DRL_FTP_PATH;
-    @Value("${RULES_CUSTOMER_RULES_XLSX_FTP_PATH}")
-    private String RULES_CUSTOMER_RULES_XLSX_FTP_PATH;
-
     @Value("${AGENDA_GROUPS_URL}")
     private String AGENDA_GROUPS_URL;
 
@@ -41,6 +31,8 @@ public class DroolsConfig {
     private static final KieServices kieServices = KieServices.Factory.get();
 
     @Bean
+    @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    @RefreshScope
     public KieContainer kieContainer() {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
         kieFileSystem.write(ResourceFactory.newUrlResource(AGENDA_GROUPS_URL));
