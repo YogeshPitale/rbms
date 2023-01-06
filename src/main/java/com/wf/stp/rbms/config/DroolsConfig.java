@@ -43,9 +43,9 @@ public class DroolsConfig {
     @Bean
     public KieContainer kieContainer() {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
-//        kieFileSystem.write(ResourceFactory.newClassPathResource(RULES_CUSTOMER_RULES_DRL));
-        kieFileSystem.write(ResourceFactory.newClassPathResource(AGENDA_GROUPS_URL_LOCAL));
-//        kieFileSystem.write(ResourceFactory.newFileResource(RULES_CUSTOMER_RULES_XLSX_FTP));
+        kieFileSystem.write(ResourceFactory.newUrlResource(AGENDA_GROUPS_URL));
+        //kieFileSystem.write(ResourceFactory.newClassPathResource(AGENDA_GROUPS_URL_LOCAL));
+        //kieFileSystem.write(ResourceFactory.newFileResource(RULES_CUSTOMER_RULES_XLSX_FTP));
         KieBuilder kb = kieServices.newKieBuilder(kieFileSystem);
         kb.buildAll();
         KieModule kieModule = kb.getKieModule();

@@ -25,7 +25,8 @@ public class RulesController {
             Upo upoOut = serviceRouter.applySanitization(upoIn);
             return new ResponseEntity<>(upoOut, HttpStatus.OK);
         } catch (Exception e) {
-            log.error(e.getMessage());
+            e.printStackTrace();
+            log.error(String.valueOf(e.getStackTrace()));
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
