@@ -1,6 +1,6 @@
 {
   "_id": {
-    "$oid": "620d73f40ec8e032b5d000ee"
+    "$oid": "620d037c0ec8e032b5cfff06"
   },
   "wfPmtOrdrPrcg": {
     "com_wellsfargo_epd_upo_avro_WfPmtOrdrPrcg": {
@@ -333,6 +333,12 @@
               "clrSysMmbId": null,
               "nm": {
                 "string": "BANK OF NEW YORK MELLON CORPORATION"
+              },
+              "twnNm": {
+                "string": "LOS ANGELES"
+              },
+              "ctry": {
+                "string": "US"
               },
               "pstlAdr_1": null,
               "othr_2": null

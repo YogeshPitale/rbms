@@ -23,20 +23,6 @@ public class ServiceRouter {
     @Autowired
     private ApplicationContext context;
 
-    public static void main(String[] args) {
-        try {
-            new ServiceRouter().applySanitization(new Upo());
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
     public Upo applySanitization(Upo upoIn) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Upo upoOut = upoIn;
         List<Class<?>> routerClasses = RbmsUTIL.findAllRoutingClasses(BASE_PACKAGE);

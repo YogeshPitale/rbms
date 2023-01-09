@@ -6,6 +6,8 @@ import com.wf.stp.rbms.service.UpoDroolsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AccountService implements RuleService {
 
@@ -22,7 +24,8 @@ public class AccountService implements RuleService {
 
     @Override
     public Upo applyTransformation(Upo upoIn) {
-        Upo upoOut = upoDroolsService.getTransformedUpo(upoIn);
+        String agendaGroup = upoIn.getPmtInf().getComWellsfargoEpdUpoAvroPmtInf().getDbtrAgt().getComWellsfargoEpdUpoAvroDbtrAgt().getFinInstnId2().getComWellsfargoEpdUpoAvroFinInstnId2().getBicfi();
+        Upo upoOut = upoDroolsService.getTransformedUpo(upoIn, Optional.of(agendaGroup));
         return upoOut;
     }
 

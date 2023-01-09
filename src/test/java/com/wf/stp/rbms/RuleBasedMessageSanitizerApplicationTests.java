@@ -30,15 +30,11 @@ import java.util.Optional;
 @Slf4j
 class RuleBasedMessageSanitizerApplicationTests {
 
-    private static final Path POSITIVE_TESTCASE_DIR = Path.of("src\\test\\resources\\scenarios\\positive\\input");
-    private static final Path NEGATIVE_TESTCASE_DIR = Path.of("src\\test\\resources\\scenarios\\negative\\input");
+    private static final Path POSITIVE_TESTCASE_DIR = Path.of("D:\\POC\\workspace\\workspace\\rbms\\src\\test\\resources\\scenarios\\positive\\input");
+    private static final Path NEGATIVE_TESTCASE_DIR = Path.of("D:\\POC\\workspace\\workspace\\rbms\\src\\test\\resources\\scenarios\\negative\\input");
 
     @Autowired
     private MockMvc mvc;
-
-    public static String readFileAsString(String file) throws Exception {
-        return new String(Files.readAllBytes(Paths.get(file)));
-    }
 
     @Test
     @DisplayName("Positive test cases")
@@ -73,7 +69,7 @@ class RuleBasedMessageSanitizerApplicationTests {
 
     public Optional<Upo> readAPIRepsonse(String upo) {
         try {
-            String addURI = "http://localhost:8090/api/v1/applyRules";
+            String addURI = "http://localhost:8080/api/v1/applyRules";
             HttpHeaders headers = new HttpHeaders();
             headers.add("Accept", "application/json");
             headers.add("Content-Type", "application/json");
@@ -109,6 +105,10 @@ class RuleBasedMessageSanitizerApplicationTests {
             e.printStackTrace();
         }
         return Optional.empty();
+    }
+
+    public static String readFileAsString(String file) throws Exception {
+        return new String(Files.readAllBytes(Paths.get(file)));
     }
 
 }

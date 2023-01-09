@@ -334,6 +334,12 @@
               "nm": {
                 "string": "BANK OF NEW YORK MELLON CORPORATION"
               },
+              "twnNm": {
+                "string": "LOS ANGELES"
+              },
+              "ctry": {
+                "string": "US"
+              },
               "pstlAdr_1": null,
               "othr_2": null
             }
