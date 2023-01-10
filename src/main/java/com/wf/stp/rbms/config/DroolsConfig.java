@@ -26,7 +26,7 @@ public class DroolsConfig {
     //    private final File RULES_CUSTOMER_RULES_XLSX_FTP = new File(RULES_CUSTOMER_RULES_XLSX_FTP_PATH);
     private static final KieServices kieServices = KieServices.Factory.get();
 
-    @Bean
+    @Bean(name = "kieContainer")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     @RefreshScope
     public KieContainer kieContainer() {

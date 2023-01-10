@@ -3,11 +3,10 @@ package com.wf.stp.rbms.service;
 import com.wf.stp.rbms.config.TrackingRuleFiredEventListener;
 import com.wf.stp.rbms.dto.upo.Upo;
 import lombok.extern.slf4j.Slf4j;
-import org.drools.compiler.testframework.TestingEventListener;
-import org.kie.api.event.rule.AgendaEventListener;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,9 +17,10 @@ import java.util.Optional;
 public class UpoDroolsService {
 
     @Autowired
-    private KieContainer kieContainer;
+    private ApplicationContext appContext;
 
     public Upo getTransformedUpo(Upo upo, Optional<String> agendaGroup) {
+        KieContainer kieContainer = (KieContainer) appContext.getBean("kieContainer");
         KieSession kieSession = kieContainer.newKieSession();
         TrackingRuleFiredEventListener agendaEventListener = new TrackingRuleFiredEventListener();
         kieSession.addEventListener(agendaEventListener);
