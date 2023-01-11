@@ -56,20 +56,6 @@ public class ServiceRouter {
         return upoOut;
     }
 
-    public static void main(String[] args) {
-        try {
-            new ServiceRouter().applySanitization(new UpoDto());
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void handleRecovery(ConsumerRecord<String, String> consumerRecord) {
 
     }
