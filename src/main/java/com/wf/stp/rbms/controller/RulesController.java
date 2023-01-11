@@ -1,6 +1,6 @@
 package com.wf.stp.rbms.controller;
 
-import com.wf.stp.rbms.dto.upo.Upo;
+import com.wf.stp.rbms.dto.dto.UpoDto;
 import com.wf.stp.rbms.listener.service.ServiceRouter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +20,10 @@ public class RulesController {
     ServiceRouter serviceRouter;
 
     @PostMapping("/applyRules")
-    public ResponseEntity<Upo> applyRules(@RequestBody Upo upoIn) {
+    public ResponseEntity<UpoDto> applyRules(@RequestBody UpoDto upoIn) {
         try {
-            Upo upoOut = serviceRouter.applySanitization(upoIn);
-            return new ResponseEntity<>(upoOut, HttpStatus.OK);
+            UpoDto upoOut = serviceRouter.applySanitization(upoIn);
+            return new ResponseEntity<>(upoIn, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             log.error(String.valueOf(e.getStackTrace()));

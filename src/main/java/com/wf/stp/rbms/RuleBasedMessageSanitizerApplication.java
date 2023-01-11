@@ -9,7 +9,6 @@ import java.io.IOException;
 @SpringBootApplication
 @Slf4j
 public class RuleBasedMessageSanitizerApplication {
-
     public static void main(String[] args) throws IOException {
         SpringApplication.run(RuleBasedMessageSanitizerApplication.class, args);
 	/*	ClassLoader classloader = Thread.currentThread().getContextClassLoader();

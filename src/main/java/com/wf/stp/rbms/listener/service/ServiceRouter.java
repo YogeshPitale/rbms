@@ -1,11 +1,14 @@
 package com.wf.stp.rbms.listener.service;
 
+import com.wf.stp.rbms.dto.dto.UpoDto;
 import com.wf.stp.rbms.dto.upo.Upo;
+import com.wf.stp.rbms.repository.UpoRepository;
 import com.wf.stp.rbms.router.RuleService;
 import com.wf.stp.rbms.router.ServicePriority;
 import com.wf.stp.rbms.util.RbmsUTIL;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -21,10 +24,18 @@ public class ServiceRouter {
     private static final String BASE_PACKAGE = "com.wf.stp.rbms";
 
     @Autowired
+    private UpoRepository upoRepository;
+    @Autowired
     private ApplicationContext context;
 
-    public Upo applySanitization(Upo upoIn) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        Upo upoOut = upoIn;
+    public UpoDto applySanitization(UpoDto upoIn) throws NoSuchMethodException, InvocationTargetException,
+            InstantiationException, IllegalAccessException {
+        UpoDto upoOut = upoIn;
+
+        DozerBeanMapper mapper = new DozerBeanMapper();
+        Upo upo = mapper.map(upoOut, Upo.class);
+        upoRepository.save(upo);
+
         List<Class<?>> routerClasses = RbmsUTIL.findAllRoutingClasses(BASE_PACKAGE);
         log.info("No of classes:" + routerClasses.size());
         for (int priority : ServicePriority.getServicePriorityMap().keySet()) {
@@ -37,6 +48,11 @@ public class ServiceRouter {
             } else
                 log.info("Transformation not required");
         }
+
+        mapper = new DozerBeanMapper();
+        Upo upo1 = mapper.map(upoOut, Upo.class);
+        upoRepository.save(upo1);
+
         return upoOut;
     }
 

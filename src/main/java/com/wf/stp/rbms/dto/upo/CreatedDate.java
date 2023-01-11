@@ -8,24 +8,24 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "$date"
+        "_date"
 })
 @Generated("jsonschema2pojo")
 public class CreatedDate {
 
-    @JsonProperty("$date")
-    private String $date;
+    @JsonProperty("_date")
+    private String _date;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("$date")
-    public String get$date() {
-        return $date;
+    @JsonProperty("_date")
+    public String get_date() {
+        return _date;
     }
 
-    @JsonProperty("$date")
-    public void set$date(String $date) {
-        this.$date = $date;
+    @JsonProperty("_date")
+    public void set_date(String _date) {
+        this._date = _date;
     }
 
     @JsonAnyGetter

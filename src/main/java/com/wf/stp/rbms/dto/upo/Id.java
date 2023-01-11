@@ -8,24 +8,24 @@ import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "$oid"
+        "_oid"
 })
 @Generated("jsonschema2pojo")
 public class Id {
 
-    @JsonProperty("$oid")
-    private String $oid;
+    @JsonProperty("_oid")
+    private String _oid;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("$oid")
-    public String get$oid() {
-        return $oid;
+    @JsonProperty("_oid")
+    public String get_oid() {
+        return _oid;
     }
 
-    @JsonProperty("$oid")
-    public void set$oid(String $oid) {
-        this.$oid = $oid;
+    @JsonProperty("_oid")
+    public void set_oid(String _oid) {
+        this._oid = _oid;
     }
 
     @JsonAnyGetter

@@ -5,6 +5,7 @@ import com.wf.stp.rbms.dto.upo.Upo;
 import lombok.extern.slf4j.Slf4j;
 import org.drools.compiler.testframework.TestingEventListener;
 import org.kie.api.event.rule.AgendaEventListener;
+import com.wf.stp.rbms.dto.dto.UpoDto;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UpoDroolsService {
     @Autowired
     private KieContainer kieContainer;
 
-    public Upo getTransformedUpo(Upo upo, Optional<String> agendaGroup) {
+    public UpoDto getTransformedUpo(UpoDto upo, Optional<String> agendaGroup) {
         KieSession kieSession = kieContainer.newKieSession();
         TrackingRuleFiredEventListener agendaEventListener = new TrackingRuleFiredEventListener();
         kieSession.addEventListener(agendaEventListener);

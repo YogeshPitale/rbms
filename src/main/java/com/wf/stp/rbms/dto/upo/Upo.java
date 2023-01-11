@@ -1,6 +1,7 @@
 package com.wf.stp.rbms.dto.upo;
 
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.annotation.Generated;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import java.util.Map;
         "wf_EvtInf",
         "splmtryData"
 })
+@Document(collection = "Upo")
 @Generated("jsonschema2pojo")
 public class Upo {
 

@@ -1,6 +1,6 @@
 package com.wf.stp.rbms.listener.service.debit;
 
-import com.wf.stp.rbms.dto.upo.Upo;
+import com.wf.stp.rbms.dto.dto.UpoDto;
 import com.wf.stp.rbms.router.RuleService;
 import org.springframework.stereotype.Service;
 
@@ -8,18 +8,13 @@ import org.springframework.stereotype.Service;
 public class DebitService implements RuleService {
 
     @Override
-    public boolean verify(Upo upoIn) {
+    public boolean verify(UpoDto upoIn) {
         return true;
     }
 
     @Override
-    public Upo applyTransformation(Upo upoIn) {
+    public UpoDto applyTransformation(UpoDto upoIn) {
         return upoIn;
-    }
-
-    @Override
-    public int getPriority() {
-        return 2;
     }
 
 }
