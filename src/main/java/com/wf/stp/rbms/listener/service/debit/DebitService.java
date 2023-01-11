@@ -17,9 +17,4 @@ public class DebitService implements RuleService {
         return upoIn;
     }
 
-    @Override
-    public int getPriority() {
-        return 2;
-    }
-
 }

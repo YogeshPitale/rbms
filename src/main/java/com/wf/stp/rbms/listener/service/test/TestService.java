@@ -19,8 +19,4 @@ public class TestService implements RuleService {
         return upoIn;
     }
 
-    @Override
-    public int getPriority() {
-        return 0;
-    }
 }

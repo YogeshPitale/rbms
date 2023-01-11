@@ -32,13 +32,6 @@ public class RbmsUTIL {
                 log.warn("Could not resolve class object for bean definition", e);
             }
         }
-        Collections.sort(result, new Comparator<Class<?>>() {
-            @SneakyThrows
-            @Override
-            public int compare(Class<?> o1, Class<?> o2) {
-                return ((RuleService) o1.getConstructor().newInstance()).getPriority() - ((RuleService) o2.getConstructor().newInstance()).getPriority();
-            }
-        });
         result.stream().forEach(r -> log.info(r.getSimpleName()));
         return result;
     }

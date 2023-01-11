@@ -29,9 +29,5 @@ public class AccountService implements RuleService {
         return upoOut;
     }
 
-    @Override
-    public int getPriority() {
-        return 1;
-    }
 
 }
