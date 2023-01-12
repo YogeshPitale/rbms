@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
+@RefreshScope
 public class DroolsConfig {
 
     @Value("${AGENDA_GROUPS_URL}")
@@ -28,7 +29,6 @@ public class DroolsConfig {
 
     @Bean(name = "kieContainer")
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    @RefreshScope
     public KieContainer kieContainer() {
         KieFileSystem kieFileSystem = kieServices.newKieFileSystem();
         kieFileSystem.write(ResourceFactory.newUrlResource(AGENDA_GROUPS_URL));
